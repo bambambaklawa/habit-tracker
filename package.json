@@ -1,0 +1,43 @@
+{
+  "name": "habit-tracker",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Lukas <kouril.lukas@gmail.com>",
+  "license": "See License in LICENSE.md",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "yarn@1.22.19",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "gulp": "^4.0.2",
+    "gulp-remove-code": "^3.0.4",
+    "prettier": "^2.6.2",
+    "prettier-eslint": "^15.0.0",
+    "prisma": "^5.19.1",
+    "ts-node": "^10.9.2",
+    "turbo": "^2.2.3",
+    "typescript": "^5.6.2"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "start": "turbo run start"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "del": "^7.0.0",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.4"
+  },
+  "type": "module",
+  "main": "index.js",
+  "keywords": [],
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
