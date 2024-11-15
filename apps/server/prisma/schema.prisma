@@ -16,8 +16,7 @@ datasource db {
 model User{
   id Int @id @default(autoincrement())
   username String
-  password String
-  email String
+  habits Habit[]
 }
 
 model Habit{
@@ -25,16 +24,18 @@ model Habit{
   habitName String
   habitIcon String
   startDay DateTime @default(now())
-  currentProgress DateTime
+  currentProgress Int
   habitNote String
+  userId Int
+  user User @relation(fields: [userId], references: [id])
 }
 
-model Reward{
-  id Int @id @default(autoincrement())
-  rewardName String
-  rewardIcon String
-  rewardTimeline Int
-  rewardEnd DateTime
-  rewardNote String
-  habitNoteUnlock DateTime
-}
+// model Reward{
+//   id Int @id @default(autoincrement())
+//   rewardName String
+//   rewardIcon String
+//   rewardTimeline Int
+//   rewardEnd DateTime
+//   rewardNote String
+//   habitNoteUnlock DateTime
+// }

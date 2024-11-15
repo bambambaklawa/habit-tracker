@@ -1,16 +1,24 @@
-const app = require('./app')
+import express from "express";
+import { getUsers, postUsers } from "./Controllers/usersController";
+import {
+  getHabits,
+  postHabits,
+  updateHabits,
+  deleteHabits,
+} from "./Controllers/habitsController";
 
-// app.get('/users', getUsers)
+const app = express();
+app.use(express.json());
 
-// app.post('/users', postUsers)
+app.get("/users", getUsers);
+app.post("/users", postUsers);
 
-// app.get('/users/id/habits', getHabits)
-// app.post('/users/id/habits', postHabits)
-// app.patch('/users/id/habits/habitid', updateHabits)
-// app.delete('/users/id/habits/habitid', deleteHabits)
+app.get("/users/:userId/habits", getHabits);
+app.post("/users/:userId/habits", postHabits);
+app.patch("/users/:userId/habits/:habitId", updateHabits);
+app.delete("/users/:userId/habits/:habitId", deleteHabits);
 
-
-const PORT = 8080
+const PORT = 8080;
 app.listen(PORT, () => {
-  console.log(`💵 Server running and listening on http://localhost:${8080}/ …`)
-})
+  console.log(`💵 Server running and listening on http://localhost:${PORT}/ …`);
+});

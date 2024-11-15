@@ -1,17 +1,16 @@
-import { Request, Response } from "express";
-
-const express = require("express");
-const cors = require("cors");
-const { PrismaClient } = require("@prisma/client");
+import express, { Request, Response } from "express";
+import cors from "cors";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+
 const serverApp = express();
 
 serverApp.use(cors());
 serverApp.use(express.json());
 
 serverApp.get("/", async (req: Request, res: Response) => {
-  res.json("Esasdasda");
+  res.json("Welcome to the server!");
 });
 
-module.exports = serverApp;
+export default serverApp;
