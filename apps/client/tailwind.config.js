@@ -5,16 +5,21 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'xxs': '0.5rem',
+        xxs: "0.5rem",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      textShadow: {
+        outline: '2px 2px 0 rgba(0, 0, 0, 0.75), -2px -2px 0 rgba(0, 0, 0, 0.75)',
+      },
       colors: {
+        "custom-bg": "#e2d1c3",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -58,4 +63,5 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
   plugins: [require("daisyui")],
+  
 };
