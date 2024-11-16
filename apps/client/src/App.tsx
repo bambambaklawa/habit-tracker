@@ -1,12 +1,16 @@
-import './App.css'
+import Hero from "./components/hero";
+import "./index.css";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 function App() {
-
   return (
     <>
-    <h1>Hello world</h1>
+      <Navbar />
+      <Hero />
+      <Footer/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
