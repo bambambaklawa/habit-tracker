@@ -8,6 +8,8 @@ import './index.css'
 import App from './App.tsx'
 import NewHabit from './components/landing/newhabit.tsx';
 import Progress from './components/landing/progress.tsx';
+import SubmitDone from './components/landing/submit-done.tsx';
+import ProgressTwo from './components/landing/progress-two.tsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/progress",
     element: <Progress/>,
+  },
+  {
+    path: "/submit-done",
+    element: <SubmitDone/>,
+  },
+  {
+    path: "/progress-two",
+    element: <ProgressTwo/>,
   }
 ]);
 

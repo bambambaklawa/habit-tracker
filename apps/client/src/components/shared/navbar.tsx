@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <>
     
-    <div className="navbar bg-gradient-to-br from-[#f1e9e1fb] to-[#efc7a0b6]">
+    <div className="navbar  bg-gradient-to-br from-amber-300/35 via-yellow-300/60 to-yellow-500/70">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -34,11 +34,11 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
-    <Link to="/"><a className="btn btn-ghost text-xl hover:border-2 hover:border-black">habitTracker.</a></Link>
+    <Link to="/"><a className="btn btn-ghost text-xl hover:border-2 hover:border-none hover:bg-transparent">habitTracker.</a></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-    <Link to="/progress"><li><a className="hover:bg-amber-300">your progress</a></li></Link>
+    <Link to="/progress"><li><a className="hover:bg-[#a7c957]">your progress</a></li></Link>
       <li>
         <details>
           <summary className="hover:bg-amber-300 z-10">choose a habit</summary>
@@ -51,8 +51,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn btn-outline text-black hover:bg-green-500 mr-1">sign in</a>
-    <a className="btn btn-warning">register.</a>
+    <a className="btn bg-transparent text-black hover:bg-[#a7c957] mr-1">sign in</a>
+    <a className="btn btn-warning mr-1">register.</a>
 
   </div>
 </div>

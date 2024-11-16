@@ -69,7 +69,7 @@ const ProgressTimeline = () => {
           clipRule="evenodd" />
       </svg>
     </div>
-    <div className="timeline-end timeline-box text-xs bg-transparent">people calling you sensei</div>
+    <div className="timeline-end timeline-box text-xs bg-transparent">people callin you sensei</div>
     <hr />
   </li>
   <li>
