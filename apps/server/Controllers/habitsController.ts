@@ -1,11 +1,20 @@
-import { Request, Response } from "express"
-import { getHabitsByUserId, addHabit, updateHabitProgress, deleteHabit } from "../Models/habitsModels"
+import { Request, Response } from "express";
+import {
+  getHabitsByUserId,
+  addHabit,
+  updateHabitProgress,
+  deleteHabit,
+} from "../Models/habitsModels";
 
 export async function getHabits(req: Request, res: Response): Promise<void> {
-  const { userId } = req.params
+  const { id } = req.params;
   try {
-    const habits = await getHabitsByUserId(Number(userId))
-    res.json(habits)
+
+  const habits = await getHabitsByUserId(Number(id));
+  if (!!habits) {
+    res.json(habits);
+  }
+
   } catch (error: any) {
     res
       .status(500)
@@ -14,48 +23,48 @@ export async function getHabits(req: Request, res: Response): Promise<void> {
 }
 
 export async function postHabits(req: Request, res: Response): Promise<void> {
-  const { username, habitName, habitIcon, habitNote } = req.body
+  const { habitName, goal, habitNote } = req.body;
 
   try {
-    await addHabit({ username, habitName, habitIcon, habitNote })
+    await addHabit({ habitName, goal, habitNote });
     res
       .status(201)
-      .json({ statusCode: 201, message: "Habit created successfully" })
+      .json({ statusCode: 201, message: "Habit created successfully" });
   } catch (error: any) {
     res
       .status(500)
-      .json({ error: "Error creating habit", details: error.message })
+      .json({ error: "Error creating habit", details: error.message });
   }
 }
 
 export async function updateHabits(req: Request, res: Response): Promise<void> {
-  const { habitId } = req.body
+  const { habitId } = req.body;
 
   try {
-    const updatedHabit = await updateHabitProgress(habitId)
+    const updatedHabit = await updateHabitProgress(habitId);
     res.status(200).json({
       statusCode: 200,
       message: "Habit updated successfully",
       habit: updatedHabit,
-    })
+    });
   } catch (error: any) {
     res
       .status(500)
-      .json({ error: "Error updating habit", details: error.message })
+      .json({ error: "Error updating habit", details: error.message });
   }
 }
 
 export async function deleteHabits(req: Request, res: Response): Promise<void> {
-  const { habitId } = req.body
+  const { habitId } = req.body;
 
   try {
-    await deleteHabit(habitId)
+    await deleteHabit(habitId);
     res
       .status(200)
-      .json({ statusCode: 200, message: "Habit deleted successfully" })
+      .json({ statusCode: 200, message: "Habit deleted successfully" });
   } catch (error: any) {
     res
       .status(500)
-      .json({ error: "Error deleting habit", details: error.message })
+      .json({ error: "Error deleting habit", details: error.message });
   }
 }

@@ -38,7 +38,7 @@ const ProgressTwo = () => {
             <div className="w-full -mt-5 -mb-12">
                 <ProgressBar
                   bgcolor={"#FCD34Dcc"}
-                  completed={"35"}
+                  completed={35}
                 />
             </div>
             <h2 className="mt-4 font-bold text-xl mr-2 text-gray-900 z-10">
@@ -79,7 +79,7 @@ const ProgressTwo = () => {
             <div className="w-full -mt-5 -mb-12">
                 <ProgressBar
                   bgcolor={"#a7c957"}
-                  completed={"68"}
+                  completed={68}
                 />
             </div>
             <h2 className="mt-4 font-bold text-xl mr-2 text-gray-900 z-10">

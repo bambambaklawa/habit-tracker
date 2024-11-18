@@ -6,17 +6,19 @@ import {
   updateHabits,
   deleteHabits,
 } from "./Controllers/habitsController";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get("/users", getUsers);
 app.post("/users", postUsers);
 
-app.get("/users/:userId/habits", getHabits);
-app.post("/users/:userId/habits", postHabits);
-app.patch("/users/:userId/habits/:habitId", updateHabits);
-app.delete("/users/:userId/habits/:habitId", deleteHabits);
+app.get("/habits/:id", getHabits);
+app.post("/habits", postHabits);
+app.patch("/habits", updateHabits);
+app.delete("/habits", deleteHabits);
 
 const PORT = 8080;
 app.listen(PORT, () => {

@@ -3,9 +3,27 @@ import Footer from "../shared/footer";
 import Navbar from "../shared/navbar";
 import ProgressBar from "./progress-bar";
 import ProgressTimeline from "./progress-timeline";
+import { useEffect, useState } from "react";
+import { stringify } from "querystring";
+
+const BASE_URL = "http://localhost:8080";
 
 
 const Progress = () => {
+
+useEffect( () => {
+  fetchData()
+}, [])
+
+const [habits, setHabits] = useState({habits: []})
+
+const fetchData = async() => {
+  const response = await fetch(`${BASE_URL}/habits/5`);
+  const data = await response.json()
+  setHabits(data)
+  console.log(data)
+}
+
   return (
     <div>
       <Navbar />
@@ -19,23 +37,23 @@ const Progress = () => {
           <div className="w-[420px]">
           <div className="w-full mt-10 flex flex-col justify-center items-center">
             <h2 className="w-full flex justify-center font-black text-2xl border-4 rounded-xl border-black p-3">
-              100 PUSH UPS EVERY DAY
+              {JSON.stringify(habits[1].habitName).toUpperCase()}
             </h2>
             <div className="flex items-center mt-3">
               <p className="font-bold mr-3 text-xs underline">start day:</p>
-              <p className="font-medium text-gray-600"> November 19th 2024</p>
+              <p className="font-medium text-gray-600"> {JSON.stringify(habits[1].startDay)}</p>
             </div>
             <div className="w-full mt-3 flex justify-center items-center gap-1 border-4 border-amber-300/80 p-3 rounded-xl">
               <p className="mr-2 font-medium text-gray-600">current streak:</p>
-              <p className="mr-2 font-black">17 DAYS</p>
+              <p className="mr-2 font-black">{JSON.stringify(habits[1].currentProgress)}</p>
               <p className="font-black text-gray-400 -mt-[2px]">|</p>
               <p className="ml-2 mr-2 font-medium text-gray-600">set goal:</p>
-              <p className="mr-2 font-black">30 DAYS</p>
+              <p className="mr-2 font-black">{habits[1].goal} DAYS</p>
             </div>
             <div className="w-full -mt-5 -mb-12">
                 <ProgressBar
                   bgcolor={"#a7c957"}
-                  completed={"60"}
+                  completed={JSON.stringify(habits[1].currentProgress * 7)}
                 />
             </div>
             <h2 className="mt-4 font-bold text-xl mr-2 text-gray-900 z-10">
@@ -43,13 +61,12 @@ const Progress = () => {
             </h2>
             <div className="-mt-[14px] h-[120px] w-full bg-transparent border-4 border-amber-300 border-opacity-80 rounded-xl flex justify-center items-center">
               <p className="p-6 text-xs font-medium text-gray-600">
-                I do this because I'm tired of not being the strongest person in
-                the room. I want to have arms bigger than Mike T. in his prime.
+              {JSON.stringify(habits[1].habitNote)}
               </p>
             </div>
             <div className="w-full flex justify-center items-center mt-7">
-            <button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none">click here to log your todays progress. 🚀</button>
-            <Link to="/newhabit"><button className="btn btn-outline ml-2 bg-amber-300 hover:bg-[#a7c957] text-black border-none">new habit.</button></Link>
+            <button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none text-xs">click here to log your todays progress 🚀</button>
+            <Link to="/start-over"><button className="btn ml-2 bg-transparent hover:bg-red-500 hover:border-red-500 text-black border-red-500 text-xs">start over. 😞</button></Link>
             </div>
           </div>
           </div>

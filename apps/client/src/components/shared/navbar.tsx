@@ -51,9 +51,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn bg-transparent text-black hover:bg-[#a7c957] mr-1">sign in</a>
-    <a className="btn btn-warning mr-1">register.</a>
-
+    <Link to="/sign-in"><a className="btn bg-transparent text-black hover:bg-[#a7c957] mr-1">sign in</a></Link>
+    <Link to="/register"><a className="btn btn-warning mr-1">register.</a></Link>
   </div>
 </div>
 </>

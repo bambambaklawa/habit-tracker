@@ -16,13 +16,15 @@ datasource db {
 model User{
   id Int @id @default(autoincrement())
   username String @unique
+  password String
+  email String
   habits Habit[]
 }
 
 model Habit{
   id Int @id @default(autoincrement())
   habitName String
-  habitIcon String
+  goal Int
   startDay DateTime @default(now())
   currentProgress Int
   habitNote String

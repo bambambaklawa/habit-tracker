@@ -1,4 +1,9 @@
-const ProgressBar = ({ bgcolor = String, completed = Number }) => {
+interface ProgressBar {
+  bgcolor: string;
+  completed: number;
+}
+
+const ProgressBar = ({ bgcolor, completed }: ProgressBar) => {
   return (
     <div className="h-8 w-full bg-gray-300 rounded-full my-12">
       <div

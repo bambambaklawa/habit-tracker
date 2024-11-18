@@ -13,9 +13,9 @@ export async function getUsers(req: Request, res: Response): Promise<void> {
 }
 
 export async function postUsers(req: Request, res: Response): Promise<void> {
-  const { username } = req.body;
+  const { username, password, email } = req.body;
   try {
-    await addUser({ username });
+    await addUser({ username, password, email });
     res
       .status(201)
       .json({ statusCode: 201, message: "User created successfully" });

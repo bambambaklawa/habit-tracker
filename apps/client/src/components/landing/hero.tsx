@@ -1,4 +1,4 @@
-import Stats from "./stats.tsx";
+// import Stats from "./stats.tsx";
 import habitHero from "../../assets/habitHero.png";
 import Grid from "./grid.tsx";
 import { Link } from "react-router-dom";
@@ -29,9 +29,9 @@ const Hero = () => {
               <Grid />
             </div>
           </div>
-          <div className="-mt-14 mb-10">
+          {/* <div className="-mt-14 mb-10">
             <Stats />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
