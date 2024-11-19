@@ -58,7 +58,7 @@ const NewHabit = () => {
       <div className="h-[600px] bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
         <div className="w-full h-screen flex flex-col justify-start items-center">
           <h1 className="text-6xl font-bold mt-10">
-            start your first habit here.
+            start your new habit here.
           </h1>{" "}
           <div className="mt-12">
             {error && (

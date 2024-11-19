@@ -53,7 +53,9 @@ export async function updateHabitProgress(
   const now = new Date();
   const startDay = habit.startDay;
   const currentProgress = Math.floor(
-    (now.getTime() - startDay.getTime()) / (1000 * 60 * 60 * 24)
+    (new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() - 
+     new Date(startDay.getFullYear(), startDay.getMonth(), startDay.getDate()).getTime()) 
+    / (1000 * 60 * 60 * 24)
   );
 
   return await prisma.habit.update({

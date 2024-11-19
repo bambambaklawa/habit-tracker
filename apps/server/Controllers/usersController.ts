@@ -15,10 +15,14 @@ export async function getUsers(req: Request, res: Response): Promise<void> {
 export async function postUsers(req: Request, res: Response): Promise<void> {
   const { username, password, email } = req.body;
   try {
-    await addUser({ username, password, email });
+    const userData = await addUser({ username, password, email });
     res
       .status(201)
-      .json({ statusCode: 201, message: "User created successfully" });
+      .json({
+        statusCode: 201,
+        message: "User created successfully",
+        userData,
+      });
   } catch (error: any) {
     res
       .status(500)

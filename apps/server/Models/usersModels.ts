@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 interface NewUser {
   username: string;
   password: string;
-  email: string
+  email: string;
 }
 
 const prisma = new PrismaClient();
@@ -13,10 +13,13 @@ export async function sendUsers() {
 }
 
 export async function addUser({ username, password, email }: NewUser) {
-  await prisma.user.create({ data: {
-    username: username,
-    password: password,
-    email: email
-  }  });
-  return true;
+  const userData = await prisma.user.create({
+    data: {
+      username: username,
+      password: password,
+      email: email,
+    },
+  });
+  console.log({ userData });
+  return userData;
 }
