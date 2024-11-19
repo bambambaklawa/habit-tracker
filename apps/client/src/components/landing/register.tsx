@@ -2,10 +2,13 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../shared/footer";
 import Navbar from "../shared/navbar";
 import { useState } from "react";
+import { useContext } from "react";
+import { MyContext } from "../../MyContext";
 
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = "http://localhost:8080";
 
 const Register = () => {
+  const { user, setUser } = useContext(MyContext);
   const [users, setUsers] = useState([
     {
       username: "abcdeg",
@@ -27,14 +30,20 @@ const Register = () => {
         password,
         email,
       };
-      
-      await fetch (`${BASE_URL}/users`, {
-        method: 'POST',
+
+      const response = await fetch(`${BASE_URL}/users`, {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newUser) 
-      })
+        body: JSON.stringify(newUser),
+      });
+
+      const parsedResponse = await response.json();
+      const { userData } = parsedResponse;
+
+      console.log(userData);
+      setUser(userData);
 
       setUsers([...users, newUser]);
       setUsername("");
