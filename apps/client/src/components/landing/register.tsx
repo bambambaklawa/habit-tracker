@@ -3,18 +3,19 @@ import Footer from "../shared/footer";
 import Navbar from "../shared/navbar";
 import { useState } from "react";
 import { useContext } from "react";
-import  {MyContext}  from "../../MyContext";
-import { Dispatch, SetStateAction } from 'react';
+import  {UserContext}  from "../../UserContext";
 
 const BASE_URL = "http://localhost:8080";
 
+type UserContextType = {
+  user: number
+  setUser: (value:number) => void;
+}
+
 const Register = () => {
-  const context = useContext(MyContext);
-  let setUser: Dispatch<SetStateAction<number | null>>;;
-  if (context!==null) {
-    setUser = context.setUser
-  }
-  
+
+  const { setUser } = useContext(UserContext) as UserContextType;
+
   const [users, setUsers] = useState([
     {
       username: "abcdeg",
@@ -22,6 +23,7 @@ const Register = () => {
       email: "ba@gmail.com",
     },
   ]);
+
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -50,7 +52,7 @@ const Register = () => {
 
       console.log({userData});
       console.log({users})
-      setUser(userData);
+      setUser(userData.id);
 
       setUsers([...users, newUser]);
       setUsername("");

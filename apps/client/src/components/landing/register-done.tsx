@@ -16,12 +16,16 @@ const SignInDone = () => {
               You can now create your first habit here 👇
             </h2>
             <Link to="/newhabit">
-              <button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none mt-5">create habit.</button>
+              <button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none mt-5">
+                create habit.
+              </button>
             </Link>
           </div>
           <div className="mt-[84px] p-8">
-            <p className="text-xl italic bg-amber-300 bg-opacity-60">“Smoke to sleep, wake up to smoke more.”</p>
-            <p className="text-right pr-2 mt-1 font-bold"> - Leaf Dog</p>
+            <p className="text-xl italic bg-amber-300 bg-opacity-60">
+              “I'm not a businessman, I'm a BUSINESS, MAN.”
+            </p>
+            <p className="text-right pr-2 mt-1 font-bold"> - Kanye West</p>
           </div>
         </div>
       </div>

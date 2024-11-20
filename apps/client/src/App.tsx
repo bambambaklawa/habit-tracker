@@ -3,20 +3,18 @@ import "./index.css";
 import Navbar from "./components/shared/navbar";
 import Footer from "./components/shared/footer";
 import { useState } from "react";
-import  { MyContext } from "./MyContext";
-
-
+import { UserContext } from "./UserContext";
 
 function App() {
   const [user, setUser] = useState<number | null>(null);
 
   return (
     <>
-      <MyContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{user, setUser}}>
         <Navbar />
         <Hero />
         <Footer />
-      </MyContext.Provider>
+      </UserContext.Provider>
     </>
   );
 }

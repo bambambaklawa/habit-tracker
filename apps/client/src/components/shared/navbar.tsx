@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { UserContext } from "../../UserContext";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 type LoggedUser = {
@@ -6,14 +7,20 @@ type LoggedUser = {
   username?: string;
 };
 
+type UserContextType = {
+  user: number;
+  setUser: (value: number) => void;
+};
+
 const Navbar = () => {
+  // const mockUser: LoggedUser = {
+  //   userLoggedIn: true,
+  //   username: "Big Boy Lukas",
+  // };
 
-  const mockUser: LoggedUser = {
-    userLoggedIn: true,
-    username: "Big Boy Lukas",
-  };
+  // const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(mockUser);
 
-  const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(mockUser);
+  const { user } = useContext(UserContext) as UserContextType;
 
   return (
     <div className="navbar bg-gradient-to-br from-amber-300/35 via-yellow-300/60 to-yellow-500/70">
@@ -81,7 +88,9 @@ const Navbar = () => {
           </Link>
           <li>
             <details>
-              <summary className="hover:bg-amber-300 z-10">choose a habit</summary>
+              <summary className="hover:bg-amber-300 z-10">
+                choose a habit
+              </summary>
               <ul className="p-2 bg-warning z-10">
                 <li>
                   <p className="p-2 rounded-md hover:bg-none line-through">
@@ -102,10 +111,10 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        {loggedUser && loggedUser.userLoggedIn ? (
+        {user !== null ? (
           <div>
             <p className="btn bg-transparent text-black hover:bg-[#a7c957] mr-1">
-              user: {loggedUser.username || "User"}
+              user: {user || "User"}
             </p>
             <button
               className="btn btn-warning mr-1"
@@ -113,7 +122,7 @@ const Navbar = () => {
             >
               Log out
             </button>
-            </div>
+          </div>
         ) : (
           <div>
             <Link to="/sign-in">
@@ -124,7 +133,7 @@ const Navbar = () => {
             <Link to="/register">
               <p className="btn btn-warning mr-1">register.</p>
             </Link>
-            </div>
+          </div>
         )}
       </div>
     </div>
