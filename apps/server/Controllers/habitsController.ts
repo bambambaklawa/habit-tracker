@@ -9,24 +9,23 @@ import {
 export async function getHabits(req: Request, res: Response): Promise<void> {
   const { id } = req.params;
   try {
-
-  const habits = await getHabitsByUserId(Number(id));
-  if (!!habits) {
-    res.json(habits);
-  }
-
+    const habits = await getHabitsByUserId(Number(id));
+    if (!!habits) {
+      res.json(habits);
+    }
   } catch (error: any) {
     res
       .status(500)
-      .json({ error: "Error fetching habits", details: error.message })
+      .json({ error: "Error fetching habits", details: error.message });
   }
 }
 
 export async function postHabits(req: Request, res: Response): Promise<void> {
   const { habitName, goal, habitNote } = req.body;
+  const { id } = req.params;
 
   try {
-    await addHabit({ habitName, goal, habitNote });
+    await addHabit({ id: Number(id), habitName, goal, habitNote });
     res
       .status(201)
       .json({ statusCode: 201, message: "Habit created successfully" });

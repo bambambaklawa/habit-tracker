@@ -3,6 +3,7 @@ import { PrismaClient, Habit, User } from "@prisma/client";
 const prisma = new PrismaClient();
 
 interface NewHabit {
+  id: number
   habitName: string;
   goal: number;
   habitNote: string;
@@ -19,7 +20,7 @@ export async function getHabitsByUserId(userId: number): Promise<User | undefine
 
 export async function addHabit(newHabit: NewHabit): Promise<boolean> {
   const user = await prisma.user.findUnique({
-    where: { username: "koko" },
+    where: { id: newHabit.id },
   });
 
   if (!user || user === null) {

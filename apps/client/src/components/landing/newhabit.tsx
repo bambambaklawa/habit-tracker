@@ -1,12 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "../shared/footer";
 import Navbar from "../shared/navbar";
-import { BaseSyntheticEvent, useState } from "react";
+import { BaseSyntheticEvent, useContext, useState } from "react";
+import { UserContext } from "@/UserContext";
+import { UserContextType } from "@/lib/types";
+
 
 const BASE_URL = "http://localhost:8080";
 
-
 const NewHabit = () => {
+
+  const { user } = useContext(UserContext) as UserContextType;
+
   const [habits, setHabits] = useState([
     {
       habitName: "abc",
@@ -34,7 +39,7 @@ const NewHabit = () => {
         habitNote,
       };
 
-      await fetch(`${BASE_URL}/habits`, {
+      await fetch(`${BASE_URL}/habits/${user?.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,9 +60,9 @@ const NewHabit = () => {
   return (
     <div>
       <Navbar />
-      <div className="h-[600px] bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
-        <div className="w-full h-screen flex flex-col justify-start items-center">
-          <h1 className="text-6xl font-bold mt-10">
+      <div className="min-h-screen flex flex-col justify-center items-center bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
+        <div className="w-full flex flex-col items-center">
+          <h1 className="text-6xl font-bold border-4 border-black rounded-xl p-4 px-10">
             start your new habit here.
           </h1>{" "}
           <div className="mt-12">

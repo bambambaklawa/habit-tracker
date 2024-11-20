@@ -16,7 +16,7 @@ app.get("/users", getUsers);
 app.post("/users", postUsers);
 
 app.get("/habits/:id", getHabits);
-app.post("/habits", postHabits);
+app.post("/habits/:id", postHabits);
 app.patch("/habits", updateHabits);
 app.delete("/habits", deleteHabits);
 

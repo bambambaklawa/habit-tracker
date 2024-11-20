@@ -6,12 +6,12 @@ const SignIn = () => {
   return (
     <div>
       <Navbar />
-      <div className="h-[600px] bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
-        <div className="w-full h-screen flex flex-col justify-start items-center">
-          <h1 className="text-6xl mt-10 font-bold border-4 border-black rounded-xl p-4 px-10">
+      <div className="min-h-screen flex flex-col justify-center items-center bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
+        <div className="w-full flex flex-col items-center">
+          <h1 className="text-6xl font-bold border-4 border-black rounded-xl p-4 px-10">
             login to see your progress.
           </h1>{" "}
-          <div className="mt-[110px]">
+          <div className="mt-8">
             <label className="p-3 rounded-sm bg-amber-300 bg-opacity-35 flex items-center gap-2">
               <p className="text-black mr-2 font-semibold p-3">username:</p>
               <input

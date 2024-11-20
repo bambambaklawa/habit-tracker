@@ -1,26 +1,10 @@
 import { UserContext } from "../../UserContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
-type LoggedUser = {
-  userLoggedIn: boolean;
-  username?: string;
-};
-
-type UserContextType = {
-  user: number;
-  setUser: (value: number) => void;
-};
+import { UserContextType } from "@/lib/types";
 
 const Navbar = () => {
-  // const mockUser: LoggedUser = {
-  //   userLoggedIn: true,
-  //   username: "Big Boy Lukas",
-  // };
-
-  // const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(mockUser);
-
-  const { user } = useContext(UserContext) as UserContextType;
+  const { user, setUser } = useContext(UserContext) as UserContextType;
 
   return (
     <div className="navbar bg-gradient-to-br from-amber-300/35 via-yellow-300/60 to-yellow-500/70">
@@ -114,11 +98,11 @@ const Navbar = () => {
         {user !== null ? (
           <div>
             <p className="btn bg-transparent text-black hover:bg-[#a7c957] mr-1">
-              user: {user || "User"}
+              user: {user.username}
             </p>
             <button
               className="btn btn-warning mr-1"
-              onClick={() => setLoggedUser(null)}
+              onClick={() => setUser(null)}
             >
               Log out
             </button>

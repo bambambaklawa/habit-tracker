@@ -3,17 +3,12 @@ import Footer from "../shared/footer";
 import Navbar from "../shared/navbar";
 import { useState } from "react";
 import { useContext } from "react";
-import  {UserContext}  from "../../UserContext";
+import { UserContext } from "../../UserContext";
+import { UserContextType } from "@/lib/types";
 
 const BASE_URL = "http://localhost:8080";
 
-type UserContextType = {
-  user: number
-  setUser: (value:number) => void;
-}
-
 const Register = () => {
-
   const { setUser } = useContext(UserContext) as UserContextType;
 
   const [users, setUsers] = useState([
@@ -23,7 +18,6 @@ const Register = () => {
       email: "ba@gmail.com",
     },
   ]);
-
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -50,9 +44,8 @@ const Register = () => {
       const parsedResponse = await response.json();
       const { userData } = parsedResponse;
 
-      console.log({userData});
-      console.log({users})
-      setUser(userData.id);
+      console.log({ userData });
+      setUser({ id: userData.id, username: userData.username });
 
       setUsers([...users, newUser]);
       setUsername("");
@@ -68,8 +61,8 @@ const Register = () => {
   return (
     <div>
       <Navbar />
-      <div className="h-[600px] bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
-        <div className="w-full h-screen flex flex-col justify-start items-center">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#fdfcfb] bg-opacity-80 [background-image:radial-gradient(#DEBA6F_0.5px,transparent_0.8px),radial-gradient(#DEBA6F_0.6px,#ebedee_0.5px)] [background-size:20px_20px] [background-position:0_0,10px_10px]">
+        <div className="w-full flex flex-col justify-start items-center">
           <h1 className="text-6xl mt-10 font-bold border-4 border-black rounded-xl p-4 px-10">
             register new user.
           </h1>{" "}
