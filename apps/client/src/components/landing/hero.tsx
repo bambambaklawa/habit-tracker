@@ -18,7 +18,7 @@ const Hero = () => {
             <div className="flex justify-center items-center mt-2">
             <p className="text-1xl py-6">this journey starts with one click</p>
             <p className="ml-2">👉</p>
-            <Link to="/newhabit"><button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none ml-2">start habit.</button></Link>
+            <Link to="/register"><button className="btn bg-[#a7c957] hover:bg-amber-300/80 text-white border-none ml-2">register.</button></Link>
             </div>
             <h1 className="text-2xl font-bold mt-12 -mb-6 text-amber-500/70">
               why stick to your habits? Well, let's see:

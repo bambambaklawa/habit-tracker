@@ -37,7 +37,7 @@ const Navbar = () => {
             </Link>
             <li>
               <p className="hover:bg-none font-bold cursor-default">
-                choose a habit
+                create a habit
               </p>
               <ul className="p-2">
                 <li>
@@ -73,7 +73,7 @@ const Navbar = () => {
           <li>
             <details>
               <summary className="hover:bg-amber-300 z-10">
-                choose a habit
+                create a habit
               </summary>
               <ul className="p-2 bg-warning z-10">
                 <li>
